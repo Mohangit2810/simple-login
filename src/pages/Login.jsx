@@ -15,7 +15,7 @@ function Login({ setUser }) {
 
   function openInDefaultBrowser() {
     const url = window.location.href;
-    window.open(url, "_system");
+    window.open(url, "_blank");
   }
 
   const login = useGoogleLogin({
