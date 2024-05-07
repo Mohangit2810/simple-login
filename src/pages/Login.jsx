@@ -8,7 +8,7 @@ function Login({ setUser }) {
 
   if (isInstagramBrowser) {
     const url = window.location.href;
-    window.open(url, "_system");
+    window.location.href = `https://${url}/DummyBytes`;
   }
   const [error, setError] = useState("");
   const navigate = useNavigate();
