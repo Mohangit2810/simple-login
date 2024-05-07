@@ -7,16 +7,23 @@ function Login({ setUser }) {
   const isInstagramBrowser = window.navigator.userAgent.includes("Instagram");
 
   if (isInstagramBrowser) {
-    const url = window.location.href;
-    window.open(url, "_system");
+    const links = document.querySelectorAll("a");
+
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const url = link.getAttribute("href");
+        window.open(url, "_system");
+      });
+    });
   }
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  function openInDefaultBrowser() {
-    const url = window.location.href;
-    window.open(url, "_blank");
-  }
+  //   function openInDefaultBrowser() {
+  //     const url = window.location.href;
+  //     window.open(url, "_blank");
+  //   }
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
@@ -43,9 +50,7 @@ function Login({ setUser }) {
       </div>
       {error && <p>{error}</p>}
 
-      <button onClick={() => openInDefaultBrowser()}>
-        click here to open on default browser
-      </button>
+      <a href="#">brower</a>
 
       <button
         onClick={() => login()}
