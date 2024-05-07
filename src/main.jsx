@@ -6,6 +6,8 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const isInstagramBrowser = window.navigator.userAgent.includes("Instagram");
 
+console.log(window.navigator.userAgent);
+
 if (isInstagramBrowser) {
   const links = document.querySelectorAll("a");
 
