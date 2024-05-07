@@ -20,10 +20,10 @@ function Login({ setUser }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  //   function openInDefaultBrowser() {
-  //     const url = window.location.href;
-  //     window.open(url, "_blank");
-  //   }
+  function openInDefaultBrowser() {
+    const url = window.location.href;
+    window.open(`window.location.href = 'intent:${url}#Intent;end';`, "_blank");
+  }
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
@@ -51,6 +51,12 @@ function Login({ setUser }) {
       {error && <p>{error}</p>}
 
       <a href="#">brower</a>
+      <button
+        onClick={() => openInDefaultBrowser()}
+        className="w-full max-w-xs font-bold shadow-md rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+      >
+        <span className="ml-4">Open in default browser</span>
+      </button>
 
       <button
         onClick={() => login()}
