@@ -8,7 +8,7 @@ function Login({ setUser }) {
 
   if (isInstagramBrowser) {
     const url = window.location.href;
-    window.open(url, "_blank", "download=''");
+    window.open(url, "_system");
   }
   const [error, setError] = useState("");
   const navigate = useNavigate();
