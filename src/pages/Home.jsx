@@ -16,12 +16,14 @@ function Home({ user }) {
     setProfile(newProfile);
   }
 
+  // Checking if user is logged in
   useEffect(() => {
     if (profile.length === 0) {
       notify();
     }
   }, [profile]);
 
+  // Fetching user profile
   useEffect(() => {
     if (user) {
       axios
@@ -42,10 +44,12 @@ function Home({ user }) {
     }
   }, [user]);
 
+  // Logout function
   function logout() {
     googleLogout();
     navigate("/");
   }
+  // If user is not logged in
   if (profile.length === 0) {
     return (
       <>
@@ -73,6 +77,8 @@ function Home({ user }) {
       </>
     );
   }
+
+  // If user is logged in
   return (
     <div>
       <div className="dark:!bg-navy-800 shadow-shadow-500 shadow-3xl rounded-primary relative mx-auto flex h-full w-full max-w-[550px] flex-col items-center bg-white bg-cover bg-clip-border p-[16px] dark:text-white dark:shadow-none">

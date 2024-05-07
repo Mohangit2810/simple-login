@@ -6,25 +6,13 @@ import { useNavigate } from "react-router-dom";
 function Login({ setUser }) {
   const isInstagramBrowser = window.navigator.userAgent.includes("Instagram");
 
-  if (isInstagramBrowser) {
-    const links = document.querySelectorAll("a");
-
-    links.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        const url = link.getAttribute("href");
-        window.open(url, "_system");
-      });
-    });
-  }
+  //   if (isInstagramBrowser) {
+  // window.open(url, "_system");
+  //   }
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  function openInDefaultBrowser() {
-    const url = window.location.href;
-    window.open(`intent:${url}#Intent;end`, "_blank");
-  }
-
+  // Login with Google
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
       setUser(codeResponse);
@@ -45,18 +33,12 @@ function Login({ setUser }) {
       <div className="my-16 mx-8 flex flex-col items-center">
         <h4 className="text-bluePrimary text-xl font-bold">
           Log in by clicking the button below
-          {isInstagramBrowser && " in a instagram browser"}
         </h4>
+        <h3 className="text-bluePrimary text-xl font-bold">
+          {isInstagramBrowser && " in a instagram browser"}
+        </h3>
       </div>
       {error && <p>{error}</p>}
-
-      <a href="#">brower</a>
-      <button
-        onClick={() => openInDefaultBrowser()}
-        className="w-full max-w-xs font-bold shadow-md rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
-      >
-        <span className="ml-4">Open in default browser</span>
-      </button>
 
       <button
         onClick={() => login()}
