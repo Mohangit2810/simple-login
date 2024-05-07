@@ -17,7 +17,3 @@ function App() {
 }
 
 export default App;
-
-// 173648640509-tj51tppmc4i2trdn7qjhujvescnpmim1.apps.googleusercontent.com
-
-// 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 client secret
