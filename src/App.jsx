@@ -5,21 +5,6 @@ import Home from "./pages/Home";
 
 function App() {
   const [user, setUser] = useState(null);
-  const isInstagramBrowser = window.navigator.userAgent.includes("Instagram");
-
-  console.log(window.navigator.userAgent);
-
-  if (isInstagramBrowser) {
-    const links = document.querySelectorAll("a");
-
-    links.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        const url = link.getAttribute("href");
-        window.open(url, "_system");
-      });
-    });
-  }
 
   return (
     <BrowserRouter>

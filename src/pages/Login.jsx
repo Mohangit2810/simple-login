@@ -4,6 +4,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login({ setUser }) {
+  const isInstagramBrowser = window.navigator.userAgent.includes("Instagram");
+
+  console.log(window.navigator.userAgent);
+
+  if (isInstagramBrowser) {
+    const links = document.querySelectorAll("a");
+
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const url = link.getAttribute("href");
+        window.open(url, "_system");
+      });
+    });
+  }
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -27,6 +42,7 @@ function Login({ setUser }) {
       <div className="my-16 mx-16 flex flex-col items-center">
         <h4 className="text-bluePrimary text-xl font-bold">
           Log in by clicking the button below
+          {isInstagramBrowser && " in a instagram browser"}
         </h4>
       </div>
       {error && <p>{error}</p>}
