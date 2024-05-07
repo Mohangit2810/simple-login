@@ -13,6 +13,11 @@ function Login({ setUser }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  function openInDefaultBrowser() {
+    const url = window.location.href;
+    window.open(url, "_system");
+  }
+
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
       setUser(codeResponse);
@@ -37,6 +42,10 @@ function Login({ setUser }) {
         </h4>
       </div>
       {error && <p>{error}</p>}
+
+      <button onClick={() => openInDefaultBrowser()}>
+        click here to open on default browser
+      </button>
 
       <button
         onClick={() => login()}
