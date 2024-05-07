@@ -22,7 +22,7 @@ function Login({ setUser }) {
 
   function openInDefaultBrowser() {
     const url = window.location.href;
-    window.open(`window.location.href = 'intent:${url}#Intent;end';`, "_blank");
+    window.open(`intent:${url}#Intent;end`, "_blank");
   }
 
   const login = useGoogleLogin({
